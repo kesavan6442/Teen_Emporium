@@ -93,7 +93,7 @@ function ProductDetailPage() {
       selectedPhone = Math.random() < 0.5 ? siteSettings.whatsappNumber : siteSettings.whatsappNumber2;
     }
     const phone = selectedPhone.replace(/[^0-9+]/g, "");
-    window.open(`https://wa.me/${phone}?text=${encoded}`, "_blank");
+    window.location.href = `https://wa.me/${phone}?text=${encoded}`;
     toast.success("Opening WhatsApp for order confirmation...");
   };
 

@@ -114,7 +114,7 @@ export function Navbar() {
       selectedPhone = Math.random() < 0.5 ? siteSettings.whatsappNumber : siteSettings.whatsappNumber2;
     }
     const phoneNumber = selectedPhone.replace(/[^0-9+]/g, ""); // sanitize number
-    window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, "_blank");
+    window.location.href = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
     toast.success("Redirecting to WhatsApp to complete booking...");
     setIsCartOpen(false);
   };
