@@ -213,7 +213,7 @@ function ProductDetailPage() {
               </p>
 
               {/* Shopping Features/Guarantees list */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
                 <div className="flex items-center gap-2 text-xs text-muted-foreground p-3 rounded-2xl glass border border-white/5">
                   <ShieldCheck className="h-4.5 w-4.5 text-[oklch(0.78_0.16_220)] shrink-0" />
                   <span>100% Authentic</span>
@@ -221,10 +221,6 @@ function ProductDetailPage() {
                 <div className="flex items-center gap-2 text-xs text-muted-foreground p-3 rounded-2xl glass border border-white/5">
                   <Truck className="h-4.5 w-4.5 text-[oklch(0.78_0.16_220)] shrink-0" />
                   <span>Free local delivery, other areas charged by location</span>
-                </div>
-                <div className="flex items-center gap-2 text-xs text-muted-foreground p-3 rounded-2xl glass border border-white/5">
-                  <RotateCcw className="h-4.5 w-4.5 text-[oklch(0.78_0.16_220)] shrink-0" />
-                  <span>7-Day Return policy</span>
                 </div>
               </div>
             </div>
