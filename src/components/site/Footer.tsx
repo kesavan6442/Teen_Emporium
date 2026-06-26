@@ -1,4 +1,4 @@
-import { Instagram, Twitter, Youtube, Facebook } from "lucide-react";
+import { Instagram } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { toast } from "sonner";
 
@@ -77,19 +77,14 @@ export function Footer() {
               A premium destination for the world's most coveted sneakers — curated, authenticated, delivered.
             </p>
             <div className="mt-6 flex items-center gap-2">
-              {[Instagram, Twitter, Youtube, Facebook].map((Icon, i) => (
-                <a
-                  key={i}
-                  href="#"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    toast.info("Follow us on social media for exclusive drops!");
-                  }}
-                  className="grid h-9 w-9 place-items-center rounded-xl glass hover:bg-white/5"
-                >
-                  <Icon className="h-4 w-4" />
-                </a>
-              ))}
+              <a
+                href="https://www.instagram.com/teens_emporium?igsh=eGZxeHE3ZnFqMjhr"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="grid h-9 w-9 place-items-center rounded-xl glass hover:bg-white/5"
+              >
+                <Instagram className="h-4 w-4" />
+              </a>
             </div>
           </div>
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
