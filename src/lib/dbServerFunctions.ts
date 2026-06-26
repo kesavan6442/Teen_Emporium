@@ -79,7 +79,7 @@ export const getDbStatus = createServerFn({ method: "POST" })
   });
 
 // 2. Products CRUD
-export const getProductsServer = createServerFn({ method: "POST" })
+export const getProductsServer = createServerFn({ method: "GET" })
   .handler(async () => {
     const { db } = await connectToDatabase();
     const products = await db.collection("products").find({}).toArray();
@@ -112,7 +112,7 @@ export const deleteProductServer = createServerFn({ method: "POST" })
   });
 
 // 3. Reviews CRUD
-export const getReviewsServer = createServerFn({ method: "POST" })
+export const getReviewsServer = createServerFn({ method: "GET" })
   .handler(async () => {
     const { db } = await connectToDatabase();
     const reviews = await db.collection("reviews").find({}).toArray();
@@ -136,7 +136,7 @@ export const deleteReviewServer = createServerFn({ method: "POST" })
   });
 
 // 4. Settings
-export const getSettingsServer = createServerFn({ method: "POST" })
+export const getSettingsServer = createServerFn({ method: "GET" })
   .handler(async () => {
     const { db } = await connectToDatabase();
     let settings = await db.collection("settings").findOne({ _id: "site" as any });

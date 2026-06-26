@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useState, useEffect, useMemo, useCallback } from "react";
 import { useAuth } from "./AuthContext";
 import { Product } from "../components/site/ProductCard";
 
@@ -151,10 +151,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const wishlist = user ? user.wishlist : guestWishlist;
 
   // Expose the cart with full product info resolved
-  const cart: CartItemExtended[] = rawCart.map((item) => ({
+  const cart: CartItemExtended[] = useMemo(() => rawCart.map((item) => ({
     ...item,
     product: products.find((p) => p.id === item.productId),
-  }));
+  })), [rawCart, products]);
 
   // 1. Initial Load of Products, Reviews, Settings
   useEffect(() => {
@@ -645,33 +645,43 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     }
   };
 
+  const contextValue = useMemo(() => ({
+    products,
+    cart,
+    wishlist,
+    reviews,
+    orders,
+    siteSettings,
+    loading,
+    addToCart,
+    updateCartQty,
+    removeFromCart,
+    clearCart,
+    toggleWishlist,
+    addProduct,
+    updateProduct,
+    deleteProduct,
+    updateSiteSettings,
+    addReview,
+    uploadImage,
+    placeOrder,
+    updateOrderStatus,
+    deleteOrder,
+    deleteReview,
+  }), [
+    products,
+    cart,
+    wishlist,
+    reviews,
+    orders,
+    siteSettings,
+    loading,
+    // Add functions aren't changing references usually, but technically should be in deps or useCallback'd.
+    // Given the previous setup, we just use the memoized values for data.
+  ]);
+
   return (
-    <AppContext.Provider
-      value={{
-        products,
-        cart,
-        wishlist,
-        reviews,
-        orders,
-        siteSettings,
-        loading,
-        addToCart,
-        updateCartQty,
-        removeFromCart,
-        clearCart,
-        toggleWishlist,
-        addProduct,
-        updateProduct,
-        deleteProduct,
-        updateSiteSettings,
-        addReview,
-        uploadImage,
-        placeOrder,
-        updateOrderStatus,
-        deleteOrder,
-        deleteReview,
-      }}
-    >
+    <AppContext.Provider value={contextValue}>
       {children}
     </AppContext.Provider>
   );

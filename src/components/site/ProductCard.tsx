@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState, memo } from "react";
 import { Heart, Eye, ShoppingBag, Star, X, Plus, Minus, Send } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { useApp } from "@/context/AppContext";
@@ -18,7 +18,7 @@ export type Product = {
   badge?: string;
 };
 
-export function ProductCard({ p, index = 0 }: { p: Product; index?: number }) {
+export const ProductCard = memo(function ProductCard({ p, index = 0 }: { p: Product; index?: number }) {
   const { wishlist, toggleWishlist, addToCart, reviews, addReview, siteSettings } = useApp();
   const { user } = useAuth();
   
@@ -102,15 +102,14 @@ export function ProductCard({ p, index = 0 }: { p: Product; index?: number }) {
         transition={{ duration: 0.5, delay: index * 0.05 }}
         className="group relative overflow-hidden rounded-2xl glass hover-lift border border-white/5"
       >
-        <div className="relative aspect-square overflow-hidden">
+        <div className="relative w-full h-[240px] md:h-[280px]">
           <Link to="/product/$productId" params={{ productId: p.id }} className="block h-full w-full">
             <img
               src={p.image}
               alt={p.name}
               loading="lazy"
-              width={800}
-              height={800}
-              className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+              decoding="async"
+              className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
             />
           </Link>
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
@@ -436,7 +435,9 @@ export function ProductCard({ p, index = 0 }: { p: Product; index?: number }) {
       </AnimatePresence>
     </>
   );
-}
+}, (prevProps, nextProps) => {
+  return prevProps.p.id === nextProps.p.id && prevProps.p.price === nextProps.p.price && prevProps.index === nextProps.index;
+});
 
 function CircleBtn({
   children,
