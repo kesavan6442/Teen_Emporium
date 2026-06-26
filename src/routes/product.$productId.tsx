@@ -84,7 +84,6 @@ function ProductDetailPage() {
       `📏 Size: ${selectedSize}\n` +
       `🔢 Qty: ${quantity}\n` +
       `💵 Price: $${p.price} each (Total: $${p.price * quantity})\n` +
-      `🖼️ Image: ${p.image}\n` +
       `🔗 Product Link: ${window.location.href}\n\n` +
       `Please confirm my booking!`
     );

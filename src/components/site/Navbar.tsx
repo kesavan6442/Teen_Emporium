@@ -100,7 +100,6 @@ export function Navbar() {
           `📏 Size: ${item.size}\n` +
           `🔢 Qty: ${item.quantity}\n` +
           `💵 Price: $${item.product?.price} each\n` +
-          `🖼️ Image: ${item.product?.image}\n` +
           `🔗 Link: ${window.location.origin}/product/${item.productId}`
       )
       .join("\n\n");

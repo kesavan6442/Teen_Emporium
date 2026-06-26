@@ -60,7 +60,6 @@ export function ProductCard({ p, index = 0 }: { p: Product; index?: number }) {
       `📏 Size: ${selectedSize}\n` +
       `🔢 Qty: ${quantity}\n` +
       `💵 Price: $${p.price} each (Total: $${p.price * quantity})\n` +
-      `🖼️ Image: ${p.image}\n` +
       `🔗 Product Link: ${productUrl}\n\n` +
       `Please confirm my booking!`;
     const encodedMessage = encodeURIComponent(message);
