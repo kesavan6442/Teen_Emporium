@@ -305,8 +305,6 @@ export function ProductCard({ p, index = 0 }: { p: Product; index?: number }) {
                     </button>
                     <a
                       href={selectedSize ? generateWhatsAppSingleBookUrl() : "#"}
-                      target="_blank"
-                      rel="noopener noreferrer"
                       onClick={(e) => {
                         if (!selectedSize) {
                           e.preventDefault();

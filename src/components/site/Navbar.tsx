@@ -412,8 +412,6 @@ export function Navbar() {
 
                 <a
                   href={cart.length > 0 ? generateWhatsAppCheckoutUrl() : "#"}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   onClick={(e) => {
                     if (cart.length === 0) {
                       e.preventDefault();

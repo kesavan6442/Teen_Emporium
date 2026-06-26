@@ -281,8 +281,6 @@ function ProductDetailPage() {
               </button>
                 <a
                   href={selectedSize ? generateWhatsAppBookUrl() : "#"}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   onClick={(e) => {
                     if (!selectedSize) {
                       e.preventDefault();
