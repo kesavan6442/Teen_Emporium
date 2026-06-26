@@ -67,7 +67,7 @@ const getFilterById = (id: string) => {
 // --- Server Functions ---
 
 // 1. Connection check / DB status
-export const getDbStatus = createServerFn({ method: "GET" })
+export const getDbStatus = createServerFn({ method: "POST" })
   .handler(async () => {
     try {
       await connectToDatabase();
@@ -79,7 +79,7 @@ export const getDbStatus = createServerFn({ method: "GET" })
   });
 
 // 2. Products CRUD
-export const getProductsServer = createServerFn({ method: "GET" })
+export const getProductsServer = createServerFn({ method: "POST" })
   .handler(async () => {
     const { db } = await connectToDatabase();
     const products = await db.collection("products").find({}).toArray();
@@ -121,7 +121,7 @@ export const deleteProductServer = createServerFn({ method: "POST" })
   });
 
 // 3. Reviews CRUD
-export const getReviewsServer = createServerFn({ method: "GET" })
+export const getReviewsServer = createServerFn({ method: "POST" })
   .handler(async () => {
     const { db } = await connectToDatabase();
     const reviews = await db.collection("reviews").find({}).toArray();
@@ -145,7 +145,7 @@ export const deleteReviewServer = createServerFn({ method: "POST" })
   });
 
 // 4. Settings
-export const getSettingsServer = createServerFn({ method: "GET" })
+export const getSettingsServer = createServerFn({ method: "POST" })
   .handler(async () => {
     const { db } = await connectToDatabase();
     let settings = await db.collection("settings").findOne({ _id: "site" as any });
