@@ -184,8 +184,7 @@ function ProductDetailPage() {
                     <Star
                       key={i}
                       className={cn(
-                        "h-4.5 w-4.5",
-                        i < Math.round(p.rating)
+                        "h-5 w-5 transition-colors",
                         i < Math.round(averageRating)
                           ? "fill-current text-[oklch(0.78_0.16_220)]"
                           : "text-white/20"
