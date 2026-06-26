@@ -99,12 +99,12 @@ export function Navbar() {
           `🏷️ Name: ${item.product?.name}\n` +
           `📏 Size: ${item.size}\n` +
           `🔢 Qty: ${item.quantity}\n` +
-          `💵 Price: $${item.product?.price} each\n` +
+          `💵 Price: ₹${item.product?.price} each\n` +
           `🔗 Link: ${window.location.origin}/product/${item.productId}`
       )
       .join("\n\n");
 
-    const message = `Hi Teens Emporium! I would like to book these drops from my cart:\n\n${orderItemsText}\n\n💵 Total Price: $${finalTotal}\n\nPlease confirm my order booking!`;
+    const message = `Hi Teens Emporium! I would like to book these drops from my cart:\n\n${orderItemsText}\n\n💵 Total Price: ₹${finalTotal}\n\nPlease confirm my order booking!`;
     const encodedMessage = encodeURIComponent(message);
     let selectedPhone = siteSettings.whatsappNumber;
     if (siteSettings.whatsappNumber2) {
@@ -346,7 +346,7 @@ export function Navbar() {
                       </span>
                       <h4 className="text-sm font-bold line-clamp-1">{item.product?.name}</h4>
                       <p className="text-xs text-muted-foreground mt-0.5">Size: {item.size}</p>
-                      <p className="text-sm font-bold mt-1">${item.product?.price}</p>
+                      <p className="text-sm font-bold mt-1">₹{item.product?.price}</p>
                     </div>
                   </div>
 
@@ -393,19 +393,19 @@ export function Navbar() {
                 <div className="space-y-2">
                   <div className="flex justify-between text-sm text-muted-foreground">
                     <span>Subtotal</span>
-                    <span className="text-foreground font-semibold">${cartSubtotal}</span>
+                    <span className="text-foreground font-semibold">₹{cartSubtotal}</span>
                   </div>
 
                   {siteSettings.discountPercent > 0 && (
                     <div className="flex justify-between text-xs text-emerald-400">
                       <span>Promo Discount ({siteSettings.discountCode})</span>
-                      <span>-${Math.round((cartSubtotal * siteSettings.discountPercent) / 100)}</span>
+                      <span>-₹{Math.round((cartSubtotal * siteSettings.discountPercent) / 100)}</span>
                     </div>
                   )}
 
                   <div className="flex justify-between text-base font-bold pt-2 border-t border-white/5">
                     <span>Total</span>
-                    <span>${finalTotal}</span>
+                    <span>₹{finalTotal}</span>
                   </div>
                 </div>
 
@@ -494,7 +494,7 @@ export function Navbar() {
                         {p.brand}
                       </span>
                       <h4 className="text-sm font-bold text-white leading-tight">{p.name}</h4>
-                      <span className="text-xs text-muted-foreground">${p.price}</span>
+                      <span className="text-xs text-muted-foreground">₹{p.price}</span>
                     </div>
                   </button>
                 ))}
@@ -545,7 +545,7 @@ export function Navbar() {
 
                     <div className="flex items-center gap-2.5">
                       <span className="text-xs text-muted-foreground font-semibold">
-                        Paid: <strong>${o.total}</strong>
+                        Paid: <strong>₹{o.total}</strong>
                       </span>
                       <span
                         className={cn(
@@ -609,7 +609,7 @@ export function Navbar() {
                             </span>
                           </div>
                         </div>
-                        <span className="text-muted-foreground">${item.price * item.quantity}</span>
+                        <span className="text-muted-foreground">₹{item.price * item.quantity}</span>
                       </div>
                     ))}
                   </div>

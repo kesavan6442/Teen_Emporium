@@ -87,7 +87,7 @@ function ProductDetailPage() {
       `🏷️ Name: ${p.name}\n` +
       `📏 Size: ${selectedSize}\n` +
       `🔢 Qty: ${quantity}\n` +
-      `💵 Price: $${p.price} each (Total: $${p.price * quantity})\n` +
+      `💵 Price: ₹${p.price} each (Total: ₹${p.price * quantity})\n` +
       `🔗 Product Link: ${window.location.href}\n\n` +
       `Please confirm my booking!`
     );
@@ -198,10 +198,10 @@ function ProductDetailPage() {
               </div>
             </div>
 
-            <div className="flex items-baseline gap-4 py-2 border-y border-white/5">
-              <span className="font-display text-3xl font-bold">${p.price}</span>
+            <div className="flex items-center gap-3">
+              <span className="font-display text-3xl font-bold">₹{p.price}</span>
               {p.oldPrice && (
-                <span className="text-base text-muted-foreground line-through">${p.oldPrice}</span>
+                <span className="text-base text-muted-foreground line-through">₹{p.oldPrice}</span>
               )}
             </div>
 

@@ -63,7 +63,7 @@ export const ProductCard = memo(function ProductCard({ p, index = 0 }: { p: Prod
       `🏷️ Name: ${p.name}\n` +
       `📏 Size: ${selectedSize}\n` +
       `🔢 Qty: ${quantity}\n` +
-      `💵 Price: $${p.price} each (Total: $${p.price * quantity})\n` +
+      `💵 Price: ₹${p.price} each (Total: ₹${p.price * quantity})\n` +
       `🔗 Product Link: ${productUrl}\n\n` +
       `Please confirm my booking!`;
     const encodedMessage = encodeURIComponent(message);
@@ -169,10 +169,10 @@ export const ProductCard = memo(function ProductCard({ p, index = 0 }: { p: Prod
             <h3 className="mt-1.5 line-clamp-1 font-display text-base font-bold text-white group-hover/link:text-muted-foreground transition-colors">
               {p.name}
             </h3>
-            <div className="mt-2 flex items-baseline gap-2">
-              <span className="font-display text-lg font-bold">${p.price}</span>
+            <div className="flex items-center gap-2">
+              <span className="font-display text-lg font-bold">₹{p.price}</span>
               {p.oldPrice && (
-                <span className="text-xs text-muted-foreground line-through">${p.oldPrice}</span>
+                <span className="text-xs text-muted-foreground line-through">₹{p.oldPrice}</span>
               )}
             </div>
           </Link>
@@ -238,10 +238,10 @@ export const ProductCard = memo(function ProductCard({ p, index = 0 }: { p: Prod
                       </span>
                     </div>
 
-                    <div className="mt-4 flex items-baseline gap-3">
-                      <span className="font-display text-2xl sm:text-3xl font-bold">${p.price}</span>
+                    <div className="flex items-center gap-3">
+                      <span className="font-display text-2xl sm:text-3xl font-bold">₹{p.price}</span>
                       {p.oldPrice && (
-                        <span className="text-sm text-muted-foreground line-through">${p.oldPrice}</span>
+                        <span className="text-sm text-muted-foreground line-through">₹{p.oldPrice}</span>
                       )}
                     </div>
 

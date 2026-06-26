@@ -387,10 +387,10 @@ function AdminDashboard() {
                         </td>
                         <td className="p-4 text-muted-foreground font-semibold">{p.brand}</td>
                         <td className="p-4">
-                          <span className="font-bold">${p.price}</span>
+                          <span className="font-bold">₹{p.price}</span>
                           {p.oldPrice && (
                             <span className="text-xs text-muted-foreground line-through ml-1.5">
-                              ${p.oldPrice}
+                              ₹{p.oldPrice}
                             </span>
                           )}
                         </td>
@@ -628,7 +628,7 @@ function AdminDashboard() {
                             {o.items.map(it => `${it.brand} ${it.name} (x${it.quantity})`).join(', ')}
                           </div>
                         </td>
-                        <td className="p-4 font-bold">${o.total}</td>
+                        <td className="p-4 font-bold">₹{o.total}</td>
                         <td className="p-4 text-xs text-muted-foreground font-semibold">
                           {o.paymentMethod}
                         </td>
@@ -834,7 +834,7 @@ function AdminDashboard() {
               <div className="grid grid-cols-3 gap-4">
                 <div className="space-y-1">
                   <label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                    Price ($) *
+                    Price (₹) *
                   </label>
                   <input
                     type="number"
@@ -848,7 +848,7 @@ function AdminDashboard() {
 
                 <div className="space-y-1">
                   <label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                    Old Price ($)
+                    Old Price (₹)
                   </label>
                   <input
                     type="number"
