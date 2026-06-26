@@ -29,7 +29,7 @@ export function Trending() {
             key={i}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
+            viewport={{ once: true }}
             transition={{ duration: 0.6, delay: i * 0.06 }}
             className={`group relative overflow-hidden rounded-2xl glass ${it.span}`}
           >
