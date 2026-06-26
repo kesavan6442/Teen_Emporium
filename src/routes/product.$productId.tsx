@@ -76,25 +76,24 @@ function ProductDetailPage() {
     toast.success(`Added ${quantity} pair(s) (Size: ${selectedSize}) to cart!`);
   };
 
-  const handleWhatsAppBooking = () => {
-    const productUrl = window.location.href;
-    const message = `Hi Teens Emporium! I want to book this drop:\n\n` +
+  const generateWhatsAppBookUrl = () => {
+    const encoded = encodeURIComponent(
+      `Hi Teens Emporium! I would like to book this drop:\n\n` +
       `👟 Brand: ${p.brand}\n` +
       `🏷️ Name: ${p.name}\n` +
       `📏 Size: ${selectedSize}\n` +
       `🔢 Qty: ${quantity}\n` +
       `💵 Price: $${p.price} each (Total: $${p.price * quantity})\n` +
       `🖼️ Image: ${p.image}\n` +
-      `🔗 Product Link: ${productUrl}\n\n` +
-      `Please confirm my order!`;
-    const encoded = encodeURIComponent(message);
+      `🔗 Product Link: ${window.location.href}\n\n` +
+      `Please confirm my booking!`
+    );
     let selectedPhone = siteSettings.whatsappNumber;
     if (siteSettings.whatsappNumber2) {
       selectedPhone = Math.random() < 0.5 ? siteSettings.whatsappNumber : siteSettings.whatsappNumber2;
     }
     const phone = selectedPhone.replace(/[^0-9+]/g, "");
-    window.location.href = `https://wa.me/${phone}?text=${encoded}`;
-    toast.success("Opening WhatsApp for order confirmation...");
+    return `https://wa.me/${phone}?text=${encoded}`;
   };
 
   const handleReviewSubmit = async (e: React.FormEvent) => {
@@ -280,15 +279,25 @@ function ProductDetailPage() {
               >
                 <ShoppingBag className="h-4 w-4" /> Add to Cart
               </button>
-              <button
-                onClick={handleWhatsAppBooking}
-                className="flex-1 flex items-center justify-center gap-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white py-3.5 text-sm font-bold tracking-wide transition-all shadow-lg cursor-pointer"
-              >
-                <svg className="h-4 w-4 fill-current" viewBox="0 0 24 24">
-                  <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.597 1.455 5.621 1.456 5.485 0 9.948-4.614 9.95-10.28.002-2.743-1.06-5.321-2.993-7.257C17.29 1.339 14.713.275 11.99.275 6.505.275 2.04 4.887 2.038 10.556c0 2.03.529 4.021 1.532 5.795L2.57 21.03l4.757-1.246-.68-.63z" />
-                </svg>
-                Book via WhatsApp
-              </button>
+                <a
+                  href={selectedSize ? generateWhatsAppBookUrl() : "#"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => {
+                    if (!selectedSize) {
+                      e.preventDefault();
+                      toast.error("Please select a size first");
+                      return;
+                    }
+                    toast.success("Opening WhatsApp for order confirmation...");
+                  }}
+                  className="w-full sm:w-auto flex-1 flex items-center justify-center gap-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white py-4 px-6 text-sm sm:text-base font-bold tracking-wide transition-all shadow-lg hover:shadow-emerald-900/10 cursor-pointer"
+                >
+                  <svg className="h-5 w-5 fill-current" viewBox="0 0 24 24">
+                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.597 1.455 5.621 1.456 5.485 0 9.948-4.614 9.95-10.28.002-2.743-1.06-5.321-2.993-7.257C17.29 1.339 14.713.275 11.99.275 6.505.275 2.04 4.887 2.038 10.556c0 2.03.529 4.021 1.532 5.795L2.57 21.03l4.757-1.246-.68-.63z" />
+                  </svg>
+                  Book via WhatsApp
+                </a>
             </div>
           </div>
         </div>
