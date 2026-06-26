@@ -31,7 +31,7 @@ export function Trending() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: i * 0.06 }}
-            className={`group relative overflow-hidden rounded-2xl glass ${it.span}`}
+            className={`group relative overflow-hidden rounded-2xl glass min-h-[280px] ${it.span}`}
           >
             <Link to="/shop" search={it.search} className="absolute inset-0 block h-full w-full text-left">
               <img
