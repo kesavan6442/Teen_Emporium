@@ -7,11 +7,11 @@ import street from "@/assets/collection-street.jpg";
 import basket from "@/assets/collection-basketball.jpg";
 
 const items = [
-  { title: "Running", desc: "Engineered for speed and distance.", img: running, span: "lg:col-span-2 lg:row-span-2", search: { search: "runner" } },
-  { title: "Lifestyle", desc: "Everyday comfort, elevated.", img: street, span: "", search: { search: "classic" } },
-  { title: "Basketball", desc: "Court-ready performance.", img: basket, span: "", search: { search: "court" } },
-  { title: "Limited Edition", desc: "Rare drops, while they last.", img: street, span: "lg:col-span-2", search: { badge: "Limited" } },
-  { title: "Streetwear", desc: "Culture, woven into every step.", img: running, span: "", search: { search: "retro" } },
+  { title: "Nike Collection", desc: "Just do it.", img: running, span: "lg:col-span-2 lg:row-span-2", search: { brand: "Nike" } },
+  { title: "Adidas Originals", desc: "Classic lifestyle.", img: street, span: "", search: { brand: "Adidas" } },
+  { title: "Jordan Exclusives", desc: "Flight club.", img: basket, span: "", search: { brand: "Jordan" } },
+  { title: "Puma Streetwear", desc: "Forever faster.", img: street, span: "lg:col-span-2", search: { brand: "Puma" } },
+  { title: "New Balance", desc: "Timeless comfort.", img: running, span: "", search: { brand: "New Balance" } },
 ];
 
 export function Trending() {
