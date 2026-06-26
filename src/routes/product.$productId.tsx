@@ -71,6 +71,10 @@ function ProductDetailPage() {
   const productReviews = reviews.filter((r) => r.productId === p.id);
   const isLiked = wishlist.includes(p.id);
 
+  const averageRating = productReviews.length > 0 
+    ? parseFloat((productReviews.reduce((acc, r) => acc + r.rating, 0) / productReviews.length).toFixed(1))
+    : p.rating;
+
   const handleAddToCart = () => {
     addToCart(p.id, quantity, selectedSize);
     toast.success(`Added ${quantity} pair(s) (Size: ${selectedSize}) to cart!`);
@@ -182,14 +186,15 @@ function ProductDetailPage() {
                       className={cn(
                         "h-4.5 w-4.5",
                         i < Math.round(p.rating)
+                        i < Math.round(averageRating)
                           ? "fill-current text-[oklch(0.78_0.16_220)]"
                           : "text-white/20"
                       )}
                     />
                   ))}
                 </div>
-                <span className="text-xs font-semibold text-muted-foreground">
-                  {p.rating} / 5.0 Rating · ({productReviews.length} customer reviews)
+                <span className="font-semibold text-white">
+                  {averageRating.toFixed(1)} / 5.0 Rating · ({productReviews.length} customer reviews)
                 </span>
               </div>
             </div>

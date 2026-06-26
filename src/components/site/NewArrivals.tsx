@@ -10,7 +10,7 @@ import { useApp } from "@/context/AppContext";
 
 
 export function NewArrivals() {
-  const { products } = useApp();
+  const { products, loading } = useApp();
   
   // Show the 8 newest products
   const latestProducts = [...products].sort((a, b) => b.id.localeCompare(a.id)).slice(0, 8);
@@ -29,9 +29,15 @@ export function NewArrivals() {
       </div>
 
       <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
-        {latestProducts.map((p, i) => (
-          <ProductCard key={p.id} p={p} index={i} />
-        ))}
+        {loading ? (
+          Array.from({ length: 4 }).map((_, i) => (
+            <div key={i} className="animate-pulse bg-white/5 rounded-2xl aspect-[3/4]" />
+          ))
+        ) : (
+          latestProducts.map((p, i) => (
+            <ProductCard key={p.id} p={p} index={i} />
+          ))
+        )}
       </div>
     </section>
   );

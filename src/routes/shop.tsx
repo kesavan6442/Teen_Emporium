@@ -31,15 +31,12 @@ export const Route = createFileRoute("/shop")({
 });
 
 const filtersList = [
-  { label: "Brand", options: ["Nike", "Adidas", "Jordan", "Puma", "New Balance", "Converse"] },
-  { label: "Size", options: ["US 7", "US 8", "US 9", "US 10", "US 11", "US 12"] },
-  { label: "Color", options: ["Black", "White", "Red", "Blue", "Green", "Tan"] },
-  { label: "Gender", options: ["Men", "Women", "Unisex", "Kids"] },
+  { label: "Brand", options: ["Nike", "Adidas", "Jordan", "Puma", "New Balance", "Converse"] }
 ];
 
 function Shop() {
   const { brand, search: searchParam, badge } = Route.useSearch();
-  const { products } = useApp();
+  const { products, loading } = useApp();
 
   // Filters State
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
@@ -205,12 +202,18 @@ function Shop() {
 
           <div>
             <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
-              {filteredProducts.map((p, i) => (
-                <ProductCard key={p.id} p={p} index={i} />
-              ))}
+              {loading ? (
+                Array.from({ length: 6 }).map((_, i) => (
+                  <div key={i} className="animate-pulse bg-white/5 rounded-2xl aspect-[3/4]" />
+                ))
+              ) : (
+                filteredProducts.map((p, i) => (
+                  <ProductCard key={p.id} p={p} index={i} />
+                ))
+              )}
             </div>
 
-            {filteredProducts.length === 0 && (
+            {!loading && filteredProducts.length === 0 && (
               <div className="h-96 flex flex-col items-center justify-center text-center p-8 rounded-3xl glass border border-white/5">
                 <SlidersHorizontal className="h-12 w-12 text-muted-foreground mb-4 opacity-40" />
                 <h3 className="font-display text-lg font-bold">No products match your filters</h3>

@@ -36,6 +36,10 @@ export function ProductCard({ p, index = 0 }: { p: Product; index?: number }) {
   
   // Filter reviews for this product
   const productReviews = reviews.filter((r) => r.productId === p.id);
+  
+  const averageRating = productReviews.length > 0 
+    ? parseFloat((productReviews.reduce((acc, r) => acc + r.rating, 0) / productReviews.length).toFixed(1))
+    : p.rating;
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -225,13 +229,13 @@ export function ProductCard({ p, index = 0 }: { p: Product; index?: number }) {
                             key={i}
                             className={cn(
                               "h-4 w-4",
-                              i < Math.round(p.rating) ? "fill-current text-[oklch(0.78_0.16_220)]" : "text-white/20"
+                              i < Math.round(averageRating) ? "fill-current text-[oklch(0.78_0.16_220)]" : "text-white/20"
                             )}
                           />
                         ))}
                       </div>
                       <span className="text-xs font-semibold text-muted-foreground">
-                        {p.rating} / 5.0 ({productReviews.length} reviews)
+                        {averageRating.toFixed(1)} / 5.0 ({productReviews.length} reviews)
                       </span>
                     </div>
 
