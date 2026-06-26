@@ -3,7 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { toast } from "sonner";
 
 const cols = [
-  { title: "Shop", links: ["New Arrivals", "Men", "Women", "Kids", "Sale"] },
+  { title: "Shop", links: ["New Arrivals", "Men", "Kids", "Sale"] },
   { title: "Help", links: ["Shipping", "Returns", "Size Guide", "FAQ", "Contact"] },
   { title: "Company", links: ["About", "Careers", "Press", "Stores", "Sustainability"] },
   { title: "Legal", links: ["Privacy", "Terms", "Cookies", "Authenticity"] },
