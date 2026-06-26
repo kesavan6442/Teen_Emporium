@@ -83,15 +83,6 @@ export const getProductsServer = createServerFn({ method: "POST" })
   .handler(async () => {
     const { db } = await connectToDatabase();
     const products = await db.collection("products").find({}).toArray();
-    if (products.length === 0) {
-      const docsToInsert = SEED_PRODUCTS.map(({ id, ...p }) => ({
-        _id: id as any,
-        ...p
-      }));
-      await db.collection("products").insertMany(docsToInsert);
-      const seeded = await db.collection("products").find({}).toArray();
-      return seeded.map(mapId);
-    }
     return products.map(mapId);
   });
 
