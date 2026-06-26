@@ -32,6 +32,7 @@ const DEFAULT_SETTINGS = {
   discountCode: "TEENS20",
   discountPercent: 20,
   whatsappNumber: "+919876543210",
+  whatsappNumber2: "",
   statBrands: "20+",
   statPairs: "10K+",
   statRating: "4.9★",
@@ -172,6 +173,11 @@ export const getSettingsServer = createServerFn({ method: "GET" })
       if (settings.statRating === undefined) {
         updates.statRating = "4.9★";
         settings.statRating = "4.9★";
+        needsUpdate = true;
+      }
+      if (settings.whatsappNumber2 === undefined) {
+        updates.whatsappNumber2 = "";
+        settings.whatsappNumber2 = "";
         needsUpdate = true;
       }
       if (needsUpdate) {

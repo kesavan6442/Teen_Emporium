@@ -64,7 +64,11 @@ export function ProductCard({ p, index = 0 }: { p: Product; index?: number }) {
       `🔗 Product Link: ${productUrl}\n\n` +
       `Please confirm my booking!`;
     const encodedMessage = encodeURIComponent(message);
-    const phoneNumber = siteSettings.whatsappNumber.replace(/[^0-9+]/g, ""); // sanitize
+    let selectedPhone = siteSettings.whatsappNumber;
+    if (siteSettings.whatsappNumber2) {
+      selectedPhone = Math.random() < 0.5 ? siteSettings.whatsappNumber : siteSettings.whatsappNumber2;
+    }
+    const phoneNumber = selectedPhone.replace(/[^0-9+]/g, ""); // sanitize
     window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, "_blank");
     toast.success("Redirecting to WhatsApp to complete booking...");
     setIsQuickViewOpen(false);

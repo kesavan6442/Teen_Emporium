@@ -81,6 +81,7 @@ function AdminDashboard() {
   const [discountCode, setDiscountCode] = useState(siteSettings.discountCode);
   const [discountPercent, setDiscountPercent] = useState(String(siteSettings.discountPercent));
   const [whatsappNumber, setWhatsappNumber] = useState(siteSettings.whatsappNumber || "");
+  const [whatsappNumber2, setWhatsappNumber2] = useState(siteSettings.whatsappNumber2 || "");
   const [statBrands, setStatBrands] = useState(siteSettings.statBrands || "20+");
   const [statPairs, setStatPairs] = useState(siteSettings.statPairs || "10K+");
   const [statRating, setStatRating] = useState(siteSettings.statRating || "4.9★");
@@ -93,6 +94,7 @@ function AdminDashboard() {
     setDiscountCode(siteSettings.discountCode || "");
     setDiscountPercent(String(siteSettings.discountPercent || 0));
     setWhatsappNumber(siteSettings.whatsappNumber || "");
+    setWhatsappNumber2(siteSettings.whatsappNumber2 || "");
     setStatBrands(siteSettings.statBrands || "20+");
     setStatPairs(siteSettings.statPairs || "10K+");
     setStatRating(siteSettings.statRating || "4.9★");
@@ -197,6 +199,7 @@ function AdminDashboard() {
         discountCode,
         discountPercent: Number(discountPercent),
         whatsappNumber,
+        whatsappNumber2,
         statBrands,
         statPairs,
         statRating,
@@ -487,18 +490,32 @@ function AdminDashboard() {
                 </div>
               </div>
 
-              <div className="space-y-1">
-                <label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                  WhatsApp Booking Number (with country code, e.g. +919876543210)
-                </label>
-                <input
-                  type="text"
-                  placeholder="+919876543210"
-                  value={whatsappNumber}
-                  onChange={(e) => setWhatsappNumber(e.target.value)}
-                  className="w-full rounded-xl bg-white/5 border border-white/10 px-4 py-2.5 text-sm outline-none focus:border-white/20 transition-colors"
-                  required
-                />
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="space-y-1">
+                  <label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                    Primary WhatsApp Booking Number
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="+919876543210"
+                    value={whatsappNumber}
+                    onChange={(e) => setWhatsappNumber(e.target.value)}
+                    className="w-full rounded-xl bg-white/5 border border-white/10 px-4 py-2.5 text-sm outline-none focus:border-white/20 transition-colors"
+                    required
+                  />
+                </div>
+                <div className="space-y-1">
+                  <label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                    Secondary WhatsApp Booking Number (Optional)
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="+919876543210"
+                    value={whatsappNumber2}
+                    onChange={(e) => setWhatsappNumber2(e.target.value)}
+                    className="w-full rounded-xl bg-white/5 border border-white/10 px-4 py-2.5 text-sm outline-none focus:border-white/20 transition-colors"
+                  />
+                </div>
               </div>
               <div className="grid grid-cols-3 gap-4">
                 <div className="space-y-1">

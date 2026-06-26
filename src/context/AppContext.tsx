@@ -49,6 +49,7 @@ export interface SiteSettings {
   discountCode: string;
   discountPercent: number;
   whatsappNumber: string;
+  whatsappNumber2: string;
   statBrands: string;
   statPairs: string;
   statRating: string;
@@ -122,6 +123,7 @@ const DEFAULT_SETTINGS: SiteSettings = {
   discountCode: "TEENS20",
   discountPercent: 20,
   whatsappNumber: "+919876543210",
+  whatsappNumber2: "",
   statBrands: "20+",
   statPairs: "10K+",
   statRating: "4.9★",

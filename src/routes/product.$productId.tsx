@@ -88,7 +88,11 @@ function ProductDetailPage() {
       `🔗 Product Link: ${productUrl}\n\n` +
       `Please confirm my order!`;
     const encoded = encodeURIComponent(message);
-    const phone = siteSettings.whatsappNumber.replace(/[^0-9+]/g, "");
+    let selectedPhone = siteSettings.whatsappNumber;
+    if (siteSettings.whatsappNumber2) {
+      selectedPhone = Math.random() < 0.5 ? siteSettings.whatsappNumber : siteSettings.whatsappNumber2;
+    }
+    const phone = selectedPhone.replace(/[^0-9+]/g, "");
     window.open(`https://wa.me/${phone}?text=${encoded}`, "_blank");
     toast.success("Opening WhatsApp for order confirmation...");
   };

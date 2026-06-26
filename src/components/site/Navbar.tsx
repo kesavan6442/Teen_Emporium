@@ -109,7 +109,11 @@ export function Navbar() {
 
     const message = `Hi Teens Emporium! I would like to book these drops from my cart:\n\n${orderItemsText}\n\n💵 Total Price: $${finalTotal}\n\nPlease confirm my order booking!`;
     const encodedMessage = encodeURIComponent(message);
-    const phoneNumber = siteSettings.whatsappNumber.replace(/[^0-9+]/g, ""); // sanitize number
+    let selectedPhone = siteSettings.whatsappNumber;
+    if (siteSettings.whatsappNumber2) {
+      selectedPhone = Math.random() < 0.5 ? siteSettings.whatsappNumber : siteSettings.whatsappNumber2;
+    }
+    const phoneNumber = selectedPhone.replace(/[^0-9+]/g, ""); // sanitize number
     window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, "_blank");
     toast.success("Redirecting to WhatsApp to complete booking...");
     setIsCartOpen(false);
