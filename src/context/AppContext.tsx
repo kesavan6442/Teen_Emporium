@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { useAuth } from "./AuthContext";
 import { Product } from "../components/site/ProductCard";
-import { SAMPLE_PRODUCTS } from "../components/site/NewArrivals";
+
 import {
   getProductsServer,
   addProductServer,
@@ -167,8 +167,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
           if (savedProducts) {
             setProducts(JSON.parse(savedProducts));
           } else {
-            localStorage.setItem(LOCAL_PRODUCTS_KEY, JSON.stringify(SAMPLE_PRODUCTS));
-            setProducts(SAMPLE_PRODUCTS);
+            localStorage.setItem(LOCAL_PRODUCTS_KEY, JSON.stringify([]));
+            setProducts([]);
           }
 
           const savedReviews = localStorage.getItem(MOCK_REVIEWS_KEY);
