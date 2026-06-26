@@ -220,7 +220,7 @@ function ProductDetailPage() {
                 </div>
                 <div className="flex items-center gap-2 text-xs text-muted-foreground p-3 rounded-2xl glass border border-white/5">
                   <Truck className="h-4.5 w-4.5 text-[oklch(0.78_0.16_220)] shrink-0" />
-                  <span>Free Express Delivery</span>
+                  <span>Free local delivery, other areas charged by location</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs text-muted-foreground p-3 rounded-2xl glass border border-white/5">
                   <RotateCcw className="h-4.5 w-4.5 text-[oklch(0.78_0.16_220)] shrink-0" />
